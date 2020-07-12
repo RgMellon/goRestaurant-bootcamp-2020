@@ -2,19 +2,21 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import TabRoutes from './tab.routes';
 
 import Home from '../pages/Home';
 import FoodDetails from '../pages/FoodDetails';
 
+import OrderSuccess from '../pages/OrderSuccess';
+
 const App = createStackNavigator();
 
 const AppRoutes: React.FC = () => (
   <NavigationContainer>
-    <App.Navigator initialRouteName="Home">
+    <App.Navigator>
       <App.Screen
+        initialRouteName="Home"
         options={{
           cardStyle: { backgroundColor: '#C72828' },
           headerShown: false,
@@ -22,6 +24,16 @@ const AppRoutes: React.FC = () => (
         name="Home"
         component={Home}
       />
+
+      <App.Screen
+        name="OrderSuccess"
+        options={{
+          cardStyle: { backgroundColor: '#C72828' },
+          headerShown: false,
+        }}
+        component={OrderSuccess}
+      />
+
       <App.Screen
         name="MainBottom"
         component={TabRoutes}
@@ -30,6 +42,7 @@ const AppRoutes: React.FC = () => (
           gestureEnabled: false,
         }}
       />
+
       <App.Screen
         name="FoodDetails"
         component={FoodDetails}
